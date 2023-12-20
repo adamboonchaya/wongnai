@@ -1,25 +1,24 @@
 # Frontend Assignment 2023
 
-[English version](README-eng.md)
+## "What to Order" Assignment 
 
-## แบบทดสอบ "สั่งอะไรดี"
+### Task 1 API Gateway
 
-### Task 1 API-Gateway
+Normally Software Engineer, Frontend at LINE MAN Wongnai will be responsible for Web application and API Gateway, which is the single entry point for all clients and composition of microservices in our infrastructure.
 
-เนื่องจาก Software Engineer, Frontend ที่ LINE MAN Wongnai นั้น โดยปกติแล้วเราจะรับผิดชอบตั้งแต่ Web Application จนไปถึง API-Gateway ซึ่งเป็นส่วนที่เป็นจุดศูนย์รวมข้อมูลจาก microservice ต่าง ๆ ในวงใน
-
-ซึ่งใน task นี้เราจะต้องสร้าง API Gateway Server ที่ใช้ดึงข้อมูลจาก JSON Data ที่ถูกจัดเตรียมไว้ให้ โดยมี requirement ที่จะกล่าวใน section ถัดไป
-
-**การสร้าง API-Gateway Server เขียนด้วยภาษา Typescript**
+In this task, you have to develop an API Gateway to retrieve data from the provided JSON Data, with the requirement discussed in the next section.
 
 #### Requirements
 
-- [ ] สร้าง endpoint ต่างๆ และส่งข้อมูลกลับมาให้เว็บสามารถแสดงผลตามดีไซน์ที่กำหนดไว้ได้อย่างถูกต้อง
-- [ ] เขียน unit test ของแต่ละ endpoint ที่สร้างขึ้นมา เพื่อที่จะมั่นใจได้ว่า endpoint แต่ละเส้นจะสามารถใช้งานได้เสมอ และทำงานอย่างถูกต้อง
+**Create API Gateway by using Typescript**
+
+- [ ] Create various endpoints and send data back so that the web can be displayed according to the design that is defined correctly.
+- [ ] Write a unit test for each endpoint created and ensures that each endpoint is always available and working properly
+
 
 #### Extra Requirements
 
-- [ ] มั่นใจว่า endpoint แต่ละเส้นจะมี performance ที่ดี สามารถ response กลับมาได้อย่างรวดเร็ว
+- [ ] Make sure each endpoint has good performance and can respond quickly.
 
 #### JSON Data Spec
 
@@ -38,14 +37,14 @@
 }
 ```
 
-| ชื่อ field | คำอธิบาย |
+| Field | Description |
 | ------ | ------ |
-| name | ชื่อร้านอาหาร |
-| id | id ของร้าน |
-| coverImage | รูปปกของร้าน |
-| menus | ชื่อเมนูทั้งหมดที่ร้านมี |
-| activeTimePeriod.open | เวลาร้านเปิด |
-| activeTimePeriod.close | เวลาร้านปิด |
+| name | Restaurant Name |
+| id | Restaurant ID |
+| coverImage | Restaurant Cover Photo |
+| menus | Restaurant Menus |
+| activeTimePeriod.open | Restaurant Opening Hour |
+| activeTimePeriod.close | Restaurant Closing Hour |
 
 - Short Menu `https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api/restaurants/:restaurantId/menus/:menuName/short.json`
 
@@ -65,17 +64,17 @@
 }
 ```
 
-| ชื่อ field | คำอธิบาย |
+| Field | Description |
 | ------ | ------ |
-| name | ชื่อเมนู |
-| id | id ของเมนู |
-| thumbnailImage | รูปปกเมนู |
-| fullPrice | ราคาเต็ม |
-| discountedPercent | เปอร์เซ็นที่ลดราคาจากราคาเต็ม |
-| discountedTimePeriod.begin | ช่วงเวลาที่เริ่มลดราคา |
-| discountedTimePeriod.end | ช่วงเวลาที่จบลดราคา |
-| sold | จำนวนที่ขายออก |
-| totalInStock | จำนวนคงเหลือในร้าน |
+| name | Menu |
+| id | Menu ID |
+| thumbnailImage | Menu Cover Photo |
+| fullPrice | Menu Price |
+| discountedPercent | Menu Discount Percentage |
+| discountedTimePeriod.begin | Discount Starting Time |
+| discountedTimePeriod.end | Discount Ending Time |
+| sold | Number of Menu Sold |
+| totalInStock | Number of Menu Total Stock |
 
 - Full Menu `https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api/restaurants/:restaurantId/menus/:menuName/full.json`
 
@@ -102,24 +101,24 @@
 }
 ```
 
-| ชื่อ field | คำอธิบาย |
+| Field | Description |
 | ------ | ------ |
-| name | ชื่อเมนู |
-| id | id ของเมนู |
-| thumbnailImage | รูปปกเมนู |
-| fullPrice | ราคาเต็ม |
-| discountedPercent | เปอร์เซ็นที่ลดราคาจากราคาเต็ม |
-| discountedTimePeriod.begin | ช่วงเวลาที่เริ่มลดราคา |
-| discountedTimePeriod.end | ช่วงเวลาที่จบลดราคา |
-| sold | จำนวนที่ขายออก |
-| totalInStock | จำนวนคงเหลือในร้าน |
-| largeImage | รูปเมนูขนาดใหญ่ |
-| options[].label | ชื่อของหัวข้อการปรับแต่งเมนู เช่น เลือกเนื้อสัตว์, เลือกไข่ |
-| options[].choices[].label | ชื่อของตัวเลือกสำหรับการปรับแต่งเมนูของหัวข้อนั้น เช่น หมู, ไก่ |
+| name | Menu |
+| id | Menu ID |
+| thumbnailImage | Menu Cover Photo |
+| fullPrice | Menu Price |
+| discountedPercent | Menu Discount Percentage |
+| discountedTimePeriod.begin | Discount Starting Time |
+| discountedTimePeriod.end | Discount Ending Time |
+| sold | Number of Menu Sold |
+| totalInStock | Number of Menu Total Stock |
+| largeImage | Large Menu Photo |
+| options[].label | Header Section of Menu Options Ex. Choose the type of meat |
+| options[].choices[].label | Choice of Menu Options Ex. Pork, Chicken |
 
-ซึ่งเราได้เตรียม API Server สำหรับทดสอบ API-Gateway ว่าสามารถใช้งานได้ไหมอยู่ที่ https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api
+We have prepared an API Server, https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api, for your API Gateway to be developed.
 
-โดยมีร้านสำหรับทดสอบ 2 ร้านที่มี id ดังต่อไปนี้:
+There are 2 restaurants with the following ID:
 
 - 567051 (ร้านลืมเคี้ยว)
 - 227018 (Ekkamai Macchiato - Home Brewer)
@@ -128,62 +127,61 @@
 
 ![](https://i.imgur.com/Xb7v6YT.png)
 
-การสร้าง web application คืองานหลักที่เหล่า Software Engineer, Frontend ที่ LINE MAN Wongnai นั้นโปรดปราณสุด ๆ โดย web technology หลักของเราก็คือ React
+Creating a web application is the main job that Software Engineer, Frontend at LINE MAN Wongnai is passionate about. Our core web technology is React.
 
-ใน task นี้ เราจะต้องสร้าง React web application สำหรับการอ่านเมนูเวลาไปนั่งที่ร้านอาหาร เพื่อช่วยเหลือ user ของเราให้สามารถสั่งอาหารที่ร้านได้ โดยปราศจากการสัมผัสสมุดเมนูที่ร้านอาหาร ลดความเสี่ยงในการแพร่กระจายของเชื้อ COVID-19
+In this task, we need to create a React web application for reading menus when going to a restaurant. To help our users reduce the risk of spreading COVID-19 by ordering food at the restaurant without touching the menu book.
 
-เพื่อความลื่นไหลในการใช้งาน เราจะต้องคำนึงถึง User Experience (UX) ที่ดีเสมอ โดยอนุญาตให้เพิ่มเติมและแก้ไข web application ให้แตกต่างไปจาก Design ที่เตรียมไว้ให้ เพื่อพัฒนา UX/UI ของ website ให้ดียิ่งขึ้น
-
-**การสร้าง Web Application เขียนด้วย React ภาษา Typescript**
+For a better application, we always think about User Experience (UX) by allowing the web application to be added and modified differently from the design provided to improve the UX/UI of the website.
 
 #### Requirements
 
-สร้าง web application สำหรับแสดงผลเมนูต่าง ๆ ที่คำนึงถึง UX ที่ดี โดย user จะรู้สึกได้ว่าการใช้งานเมนูผ่าน website นี้สะดวกสบายยิ่งกว่าการใช้สมุดเมนูแบบเล่มบนโต๊ะอาหาร โดยเชื่อมต่อกับ API-Gateway ที่เราสร้างขึ้นในข้อ 1 เพื่อนำข้อมูลมาแสดงผล และสร้างสรรค์ feature ต่าง ๆ ตามที่กำหนดให้
+**Create Web Application by using React and Typescript**
 
-โดย web application จะต้องสามารถทำทุก feature ดังต่อไปนี้ได้
+Create a web application for displaying menus with good UX in mind. Users will feel that using menus through this website is more comfortable than using a menu book on a dining table. By connecting your web application to the API Gateway that you created in task 1 to bring the data to display and create various features as specified
 
-- [ ] แสดงรายละเอียดของเมนูแต่ละเมนูได้อย่างครบถ้วน
-- [ ] แสดงรายละเอียดของร้านอาหารได้อย่างครบถ้วน
-- [ ] สามารถใช้งานได้ดีบนทุกขนาดหน้าจอ เช่น Desktop, Tablet หรือ Smartphone
+The web application must be able to perform all of the following features:
 
-และเพื่อควบคุมคุณภาพของโค้ดที่จะถูกส่งออกไปให้กับ user เราจึงจะต้องทำสิ่งต่อไปนี้
+- [ ] Display details of each menu correctly
+- [ ] Display restaurant detail correctly
+- [ ] Can be used well on all screen sizes such as Desktop, Tablet, or Smartphone
 
-- [ ] เขียน unit test เพื่อมั่นใจได้ว่า website ที่ user ใช้งานจะสามารถทำงานได้อย่างถูกต้องตาม feature ข้างต้น
+And to control the quality of the code that will be sent to the user, we will need to do the following:
 
-หัวใจหลักของเราคือการมอบความสะดวกสบายให้กับ user ผู้สมัครสามารถเพิ่มเติม feature อื่นที่นอกเหนือจาก feature ที่กล่าวมาข้างต้นได้อย่างอิสระ เพื่อสร้างประสบการณ์ใช้งานที่สะดวกสบายต่อ user และเพิ่มยอดขายให้แก่ร้านที่มาใช้เมนูบน website นี้
+- [ ] Write a unit test to ensure that all features are working properly.
+
+Our main focus is to provide convenience to users. You can freely add other features in addition to the features mentioned above to create a better user experience and increase sales for the restaurant that uses your web application.
 
 #### Extra Requirements
 
-ในส่วนนี้เป็นส่วนที่ถ้าเราทำเพิ่มขึ้นมาจะช่วยให้ UX ดียิ่งขึ้น
+This is the part that if we do, it will help the UX even better.
 
-- [ ] แสดงผล UI ส่วนลดตามช่วงเวลา เพื่อเพิ่มแรงจูงใจในการตัดสินใจซื้อของ user
-- [ ] แสดงผล UI เมนูยอดขายสูงสุด เป็นเมนูยอดนิยม เพื่อเพิ่มแรงจูงใจในการตัดสินใจซื้อของ user
-- [ ] ทำให้ website แสดงผลได้อย่างรวดเร็ว แม้จะมีรูป และข้อมูลที่จะต้องถูกโหลดเป็นจำนวนมาก
+- [ ] Displays the discount for a period of time UI to increase user motivation in purchasing decisions
+- [ ] Displays the popular menu UI for the top sales menu to increase user motivation in purchasing decisions
+- [ ] Make your website faster, even with a lot of images and data that need to be loaded.
 
 ### Grading Criteria
 
-- [ ] Website สามารถทำงานได้ถูกต้องตาม requirement ทั้งหมดที่กล่าวมา
-- [ ] ความชำนาญในด้าน Javascript, Typescript และ React
-- [ ] Good Developer Experience โค้ดที่เขียนมาสามารถนำไปพัฒนาต่อได้ยากไหม
-- [ ] ประสิทธิภาพการทำงานของ website
-- [ ] Website มี UX/UI ที่ดี user สามารถใช้งาน website ได้อย่างลื่นไหล
+- [ ] Website can work properly according to all requirements mentioned above.
+- [ ] Proficiency in Javascript, Typescript, and React
+- [ ] Good Developer Experience, Is the written code difficult to develop in the future?
+- [ ] Website performance
+- [ ] Website has good UX/UI, and users can use the website smoothly.
  
 ###  Run project
 
-เราได้ทำการสร้างโปรเจคเริ่มต้นทั้ง api-gateway และ web ไว้ให้แล้ว ผู้ทำแบบทดสอบจะต้อง develop api-gateway และ web ตาม task ทั้งหมดที่ได้กล่าวมาข้างต้น โดยท้ายที่สุด script ดังต่อไปนี้จะต้องสามารถ run ทั้งสอง project พร้อมกันได้ที่ root folder อย่างถูกต้อง
+We have already an initial project for API Gateway and Web application. You have to develop both API Gateway and Web application based on all the tasks mentioned above. We will run the project you submitted by using this script, please make sure this script can run both projects at the root folder correctly.
 
 1. install all dependencies
 ```
 yarn
 ```
 
-2. run web and api-gateway in parallel
+2. run web and API Gateway in parallel
 ```
 npx lerna run dev --parallel
 ```
-
 ### Assignment Period
+Please complete this assignment within 5 days ater the time this email has been sent.
 
-สำหรับแบบทดสอบนี้มีระยะเวลาในการทำทั้งสิ้น 5 วัน นับจากวันที่ผู้สมัครได้รับแบบทดสอบผ่านทางอีเมล
 
 
