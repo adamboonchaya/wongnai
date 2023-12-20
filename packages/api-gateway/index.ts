@@ -1,43 +1,21 @@
-import express from 'express';
-import axios from 'axios';
+import express from 'express'
+import restaurantRouter from './routes/restaurantsRoute'
+import menuRouter from './routes/menuRoute'
 
-const app = express();
-const port = 3001;
+const app = express()
+const port = 3001
 
-app.get('/restaurants/:restaurantId', async (req: any, res: any) => {
-	try {
-		const restaurantId = req.params.restaurantId;
-		const restaurantUri = `https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api/restaurants/${restaurantId}.json`;
-		const restaurant = await axios.get(restaurantUri);
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
-		res.json(restaurant.data);
-	} catch (error) {
-		console.error('Error fetching data:', error);
-		res.status(500).send('Internal Server Error');
-	}
-});
-
-app.get('/restaurants/:restaurantId/menus/:menuName/:menuSize', async (req: any, res: any) => {
-	try {
-	  const restaurantId = req.params.restaurantId;
-	  const menuName = req.params.menuName
-	  const menuSize = req.params.menuSize
-	  const menuUri = `https://us-central1-wongnai-frontend-assignment.cloudfunctions.net/api/restaurants/${restaurantId}/menus/${menuName}/${menuSize}.json`;
-	  const restaurant = await axios.get(menuUri);
-  
-	  res.json(restaurant.data);
-	} catch (error) {
-	  console.error('Error fetching data:', error);
-	  res.status(500).send('Internal Server Error');
-	}
-});
-
+app.use('/', restaurantRouter)
+app.use('/', menuRouter);
 
 
 try {
 	app.listen(port, (): void => {
-		console.log(`Connected successfully on port ${port}`);
+		console.log(`Connected successfully on port ${port}`)
 	});
 } catch (error) {
-	console.error(`Error occured: ${(error as Error).message}`);
+	console.error(`Error occured: ${(error as Error).message}`)
 }
