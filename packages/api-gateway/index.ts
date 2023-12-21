@@ -1,16 +1,14 @@
 import express from 'express'
-import restaurantRouter from './routes/restaurantsRoute'
-import menuRouter from './routes/menuRoute'
+import restaurantRouter from './routes/restaurantsRoute/restaurantsRoute'
+import menuRouter from './routes/menuRoute/menuRoute'
 
 const app = express()
 const port = 3001
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-
 app.use('/', restaurantRouter)
 app.use('/', menuRouter);
-
 
 try {
 	app.listen(port, (): void => {
